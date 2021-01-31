@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>ToDo App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="/static/styles.css" rel="stylesheet"/>
+</head>
+
+<body style="background-color:#DADED4;">
+  <%- include('navbar.ejs') %>
+  <br><br>
+  <h2>My ToDo List</h2>
+  <form action="/todo" method="post">
+    <div class="form">
+    <div class="form-group col-md-15">
+      <input type="text" class="form-control" id="task" name="task" placeholder="Add new Task"/>
+    </div>
+    <br><br><br>
+  <button type="submit" class="btn btn-outline-primary">ADD TASK</button>
+  </div>
+</form>
+<br>
+<% if (message) { %>
+  <script>alert('Task added successfully');</script>
+    <% } %>
+<% if (error) { %>
+  <script>alert('Task already exists! Enter new task');</script>
+    <% } %>
+</body>
+</html>
