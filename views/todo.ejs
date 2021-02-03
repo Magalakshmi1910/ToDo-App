@@ -6,7 +6,6 @@
 </head>
 
 <body style="background-color:#DADED4;">
-  <%- include('navbar.ejs') %>
   <br><br>
   <h2>My ToDo List</h2>
   <form action="/todo" method="post">
@@ -17,11 +16,18 @@
     <br><br><br>
   <button type="submit" class="btn btn-outline-primary">ADD TASK</button>
   </div>
+<br><br>
+  <ul>
+    <% if (tasks) { %>
+    <% tasks.forEach(function(task){ %>
+      <li class="lineThrough" id="liClick"><%= task.item %>
+      <button type="submit" name="deleteTask" value = "<%= task.item %>" style="margin: 0;position: absolute;left: 56%;transform: translate(-10%, 10%);" class="btn btn-primary btn-sm">Delete</button>
+  </li>
+    <% }) %>
+      <% } %>
+  </ul>
 </form>
 <br>
-<% if (message) { %>
-  <script>alert('Task added successfully');</script>
-    <% } %>
 <% if (error) { %>
   <script>alert('Task already exists! Enter new task');</script>
     <% } %>
